@@ -1,0 +1,123 @@
+{
+  "name": "html-to-string-converter",
+  "displayName": "HTML to String Converter",
+  "description": "Convert HTML files to minified string (JSON) or Base64 (.b64).",
+  "version": "1.0.0",
+  "publisher": "oijusti",
+  "engines": {
+    "vscode": "^1.81.0"
+  },
+  "icon": "images/icon.png",
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "html",
+    "string",
+    "json",
+    "base64",
+    "b64",
+    "minified",
+    "html to string",
+    "html to json",
+    "html to base64",
+    "html to b64",
+    "oijusti"
+  ],
+  "sponsor": {
+    "url": "https://github.com/sponsors/oijusti"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oijusti/html-to-string-ext"
+  },
+  "bugs": {
+    "url": "https://github.com/oijusti/html-to-string-ext/issues"
+  },
+  "homepage": "https://github.com/oijusti/html-to-string-ext#readme",
+  "license": "MIT",
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "html-to-string-converter.convertActiveHtml",
+        "title": "Convert Active HTML file to String (JSON)"
+      },
+      {
+        "command": "html-to-string-converter.convertSelectedHtml",
+        "title": "Convert Selected HTML file to String (JSON)"
+      },
+      {
+        "command": "html-to-string-converter.convertActiveHtmlToBase64",
+        "title": "Convert Active HTML file to Base64 (.b64)"
+      },
+      {
+        "command": "html-to-string-converter.convertSelectedHtmlToBase64",
+        "title": "Convert Selected HTML file to Base64 (.b64)"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "html-to-string-converter.convertActiveHtml",
+          "when": "false"
+        },
+        {
+          "command": "html-to-string-converter.convertSelectedHtml",
+          "when": "false"
+        },
+        {
+          "command": "html-to-string-converter.convertActiveHtmlToBase64",
+          "when": "false"
+        },
+        {
+          "command": "html-to-string-converter.convertSelectedHtmlToBase64",
+          "when": "false"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "html-to-string-converter.convertSelectedHtml",
+          "when": "resourceExtname == .html || resourceExtname == .htm",
+          "group": "navigation"
+        },
+        {
+          "command": "html-to-string-converter.convertSelectedHtmlToBase64",
+          "when": "resourceExtname == .html || resourceExtname == .htm",
+          "group": "navigation"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "html-to-string-converter.convertActiveHtml",
+          "when": "resourceExtname == '.html' || resourceExtname == '.htm'",
+          "group": "navigation"
+        },
+        {
+          "command": "html-to-string-converter.convertActiveHtmlToBase64",
+          "when": "resourceExtname == '.html' || resourceExtname == '.htm'",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run bundle",
+    "bundle": "node esbuild.config.js",
+    "watch": "node esbuild.config.js --watch",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/html-minifier-terser": "^7.0.2",
+    "@types/node": "^18.19.124",
+    "@types/vscode": "^1.81.0",
+    "@vscode/vsce": "^3.6.0",
+    "esbuild": "^0.25.9",
+    "tslint": "^6.1.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "html-minifier-terser": "^7.0.0"
+  }
+}

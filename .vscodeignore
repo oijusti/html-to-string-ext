@@ -1,0 +1,19 @@
+# Ignore dev/workspace stuff
+.vscode/**
+.vscode-test/**
+.github/**
+images/screenshots/**
+
+# Ignore source files (only ship compiled out/)
+src/**
+**/*.ts
+**/*.map
+esbuild.config.js
+
+# Ignore dependencies (bundled by esbuild)
+node_modules/**
+
+# Misc
+.gitignore
+.gitattributes
+tsconfig.json
